@@ -10,21 +10,21 @@ var cwd = process.cwd();
 
 var default_config = {
   templates: { 
-    files: [
+    src: [
       path.join(cwd, 'src', 'templates', '*.jade'),
       path.join(cwd, 'src', 'templates', '**', '*.jade')
     ],
     task: ['templates']
   },
   styles: { 
-    files: [
+    src: [
       path.join(cwd, 'src', 'static', 'styles', '*.styl'),
       path.join(cwd, 'src', 'templates', '**', '*.styl')
     ],
     task: ['styles']
   },
   scripts: { 
-    files: [
+    src: [
       path.join(cwd, 'src', 'static', 'scripts', '**')
     ],
     task: []
@@ -33,9 +33,11 @@ var default_config = {
 
 var self = {
   config: default_config,
+  set: function(config) {
+    this.config = _.assign(this.config, config);
+  },
   run: function(config) {
-    config = _.assign(this.config, config);
-    watchFiles(config);
+    watchFiles(config || this.config);
   }
 };
 
@@ -51,8 +53,8 @@ function changed() {
 function watchFiles(config) {
   livereload.listen();
 
-  _.each(config, function(src) {
-    gulp.watch(src.files, src.task).on('change', changed);
+  _.each(config, function(item) {
+    gulp.watch(item.src, item.task).on('change', changed);
   });
 }
 
