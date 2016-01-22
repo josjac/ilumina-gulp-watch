@@ -27,7 +27,7 @@ var default_config = {
     src: [
       path.join(cwd, 'src', 'static', 'scripts', '**')
     ],
-    task: []
+    task: null
   }
 };
 
