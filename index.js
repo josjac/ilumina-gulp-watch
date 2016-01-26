@@ -19,6 +19,7 @@ var default_config = {
   styles: { 
     src: [
       path.join(cwd, 'src', 'static', 'styles', '*.styl'),
+      path.join(cwd, 'src', 'static', 'styles', '**', '*.styl'),
       path.join(cwd, 'src', 'templates', '**', '*.styl')
     ],
     task: ['styles']
