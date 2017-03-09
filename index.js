@@ -49,6 +49,10 @@ function changed() {
         return livereload.changed.apply(livereload, a);
       };
     }(arguments)) , 100);
+
+  if (typeof self.onChanged === 'function') {
+    self.onChanged.apply(this, arguments);
+  }
 }
 
 function watchFiles(config) {
