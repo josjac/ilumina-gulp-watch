@@ -11,8 +11,8 @@ var cwd = process.cwd();
 var default_config = {
   templates: { 
     src: [
-      path.join(cwd, 'src', 'templates', '*.jade'),
-      path.join(cwd, 'src', 'templates', '**', '*.jade')
+      path.join(cwd, 'src', 'templates', '*.pug'),
+      path.join(cwd, 'src', 'templates', '**', '*.pug')
     ],
     task: ['templates']
   },
